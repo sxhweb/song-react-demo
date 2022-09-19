@@ -115,7 +115,11 @@ module.exports = {
     }),
     // pro环境下必须确认当前的dll文件的hash
     new AddAssetHtmlWebpackPlugin({
-      filepath: path.resolve(__dirname, isPro ? './pro-dll/dll.264ae4dc.js' : './dev-dll/dll.js')
+      filepath: path.resolve(__dirname, isPro ? './pro-dll/dll.ae1ae134.js' : './dev-dll/dll.js')
+    }),
+    new AddAssetHtmlWebpackPlugin({
+      filepath: path.resolve(__dirname, isPro ? './pro-dll/dll.css' : './dev-dll/dll.css'),
+      typeOfAsset: 'css'
     })
   ],
   // 绝对路径别名

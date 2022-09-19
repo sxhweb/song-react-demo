@@ -9,6 +9,7 @@
 const webpack = require('webpack')
 const path = require('path')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 // happypack常见多进程打包
 const HappyPack = require('happypack')
 // let BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -46,7 +47,8 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {loader: 'style-loader'},
+          // {loader: 'style-loader'},
+          MiniCssExtractPlugin.loader,
           {loader: 'css-loader'}
         ]
       },
@@ -80,6 +82,9 @@ module.exports = {
     new HappyPack({
       id: 'happy',
       loaders: ['babel-loader']
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
     })
     // new AssetsPlugin({
     //   filename: 'bundle-config.json',
